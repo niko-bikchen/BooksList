@@ -44,7 +44,10 @@ public class IndexController {
 
     @RequestMapping(value = "add-book", method = RequestMethod.POST)
     public String addBook(@ModelAttribute BookEntity book) {
-        bookService.addNewBook(book);
+        if (!book.getAuthor().isEmpty() && !book.getTitle().isEmpty() && !book.getIsbn().isEmpty()) {
+            bookService.addNewBook(book);
+        }
+
         return "redirect:/";
     }
 }
