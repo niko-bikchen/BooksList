@@ -14,13 +14,8 @@ public class BookService {
     private Integer entitiesId = 0;
 
     @Transactional
-    public void addNewBook(String isbn, String title, String author) {
-        BookEntity book = new BookEntity();
-
+    public void addNewBook(BookEntity book) {
         book.setBNum(entitiesId++);
-        book.setTitle(title);
-        book.setAuthor(author);
-        book.setIsbn(isbn);
 
         entityManager.merge(book);
     }

@@ -43,10 +43,8 @@ public class IndexController {
     }
 
     @RequestMapping(value = "add-book", method = RequestMethod.POST)
-    public String addBook(@RequestParam("title") String title,
-                          @RequestParam("author") String author,
-                          @RequestParam("isbn") String isbn) {
-        bookService.addNewBook(isbn, title, author);
+    public String addBook(@ModelAttribute BookEntity book) {
+        bookService.addNewBook(book);
         return "redirect:/";
     }
 }
